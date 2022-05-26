@@ -36,3 +36,7 @@ make version # git --no-pager tag | grep -v "^v" | sort -V
 git tag 1.0.0 -m 'skills tree released'
 git push origin 1.0.0
 ```
+
+## Example
+
+![skills](https://static.ac93.uk/resume/skills.png)
