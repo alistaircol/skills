@@ -66,6 +66,7 @@ pdf:
 	@$(docker_run_image_dot) -Tps2 -o build/skills.ps skills.dot
 	@$(docker_run_image) ps2pdf build/skills.ps build/skills.pdf
 	@rm build/skills.ps
+	@bash canonicalise-pdf-skills.sh
 	@echo "$(WHITE)$(shell date +"%d/%m/%Y %H:%M:%S")$(RESET) $(GREEN)built$(RESET) skills $(WHITE)pdf$(RESET) file"
 
 version:
