@@ -29,10 +29,10 @@ docker_run_image_dot = $(docker_run_image) dot
 
 .PHONY: help
 help:
-	@echo "Ally's skill tree"
+	@echo "Ally's skills tree"
 	@echo ""
 	@echo "subcommands:"
-	@echo "  $(GREEN)lint$(RESET)   runs $(WHITE)yamllint$(RESET) for workflow files $(LIGHTPURPLE)local only$(RESET)"
+	@echo "  $(GREEN)lint$(RESET)   runs $(WHITE)yamllint$(RESET) for workflow files $(LIGHTPURPLE)(local only)$(RESET)"
 	@echo "  $(GREEN)image$(RESET)  builds a docker image (basically $(WHITE)dot$(RESET) with custom font)"
 	@echo "  $(GREEN)build$(RESET)  builds skills tree assets"
 
@@ -47,7 +47,7 @@ build: clean dot png svg pdf
 	@echo "$(WHITE)$(shell date +"%d/%m/%Y %H:%M:%S")$(RESET) $(GREEN)done!$(RESET)"
 
 clean:
-	@find "$(shell pwd)/build" -type f -not -name '.gitkeep' -delete
+	@find "$(shell pwd)/build" -type f -not -name '.gitkeep' -not -name 'README.md' -delete
 
 dot:
 	@bash skills.sh

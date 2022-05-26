@@ -1,10 +1,10 @@
 # Skills
 
-My skill tree.
+My skills tree.
 
 ```text
 $ make
-Ally's skill tree
+Ally's skills tree
 
 subcommands:
   lint   runs yamllint for workflow files local only
@@ -19,7 +19,18 @@ make image
 make build
 ```
 
-The `build` uses `envsubst` in `skills.sh` with `skills.tmpl` to make a `skills.dot` that is generated and then various assets are built from the source file.
+---
+
+The `make image` creates an image which is basically has `graphviz` but with a custom font installed.
+
+The `make build` uses the above image and:
+
+* uses `envsubst`
+* from `skills.sh`
+* to interpolate variables in `skills.tmpl.dot`
+* to make a `skills.dot` source file
+  
+the source file is then used to build various assets files in `build/`.
 
 ## Release
 
@@ -36,6 +47,12 @@ make version # git --no-pager tag | grep -v "^v" | sort -V
 git tag 1.0.0 -m 'skills tree released'
 git push origin 1.0.0
 ```
+
+The following variables should be added to the repository's actions secrets:
+
+* `AWS_ACCESS_KEY_ID` - self-explanatory
+* `AWS_SECRET_ACCESS_KEY` - self-explanatory
+* `AWS_S3_BUCKET` - i.e. part before region.aws
 
 ## Example
 
