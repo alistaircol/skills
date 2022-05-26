@@ -51,4 +51,4 @@ jobs:
 
     - name: Upload assets to S3
       run:
-        aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET }}/resume build/
+        aws s3 sync build/ s3://${{ secrets.AWS_S3_BUCKET }}/resume
