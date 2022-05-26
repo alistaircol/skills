@@ -1,16 +1,16 @@
 digraph {
-    rankdir = "LR";
+    rankdir = "${SKILLS_DIRECTION}";
 
     graph [bgcolor = "transparent"];
 
     me [
         label = "skills"
-        shape = "box"
+        shape = "box3d"
         style = "filled"
         fontname = "${SKILLS_FONT_NAME}"
-        fillcolor = "#ffc108"
-        color = "#ffc108"
-        fontcolor = "#000000"
+        fillcolor = "#f1c40f"
+        color = "#f39c12"
+        fontcolor = "#ffffff"
         fontsize = "24"
     ];
 
@@ -70,19 +70,21 @@ digraph {
             macos -> brew  ${SKILLS_EDGE_QUATERNARY};
             macos -> valet ${SKILLS_EDGE_QUATERNARY};
 
-            ubuntu [${SKILLS_NODE_STYLE_TERTIARY} label = "Ubuntu" URL = "https://regolith-linux.org"];
+            linux [${SKILLS_NODE_STYLE_TERTIARY} label = "Linux" URL = "https://regolith-linux.org"];
 
-            os -> ubuntu ${SKILLS_EDGE_TERTIARY};
+            os -> linux ${SKILLS_EDGE_TERTIARY};
 
             i3wm       [${SKILLS_NODE_STYLE_QUATERNARY} label = "i3wm" URL = "https://i3wm.org"];
             tmuxinator [${SKILLS_NODE_STYLE_QUATERNARY} label = "tmuxinator" URL = "https://github.com/tmuxinator/tmuxinator"];
             tmux       [${SKILLS_NODE_STYLE_QUATERNARY} label = "tmux" URL = "https://github.com/tmux/tmux/wiki/Getting-Started"];
-            make       [${SKILLS_NODE_STYLE_QUATERNARY} label = "Makefile" URL = "https://www.gnu.org/software/make/"];
+            make       [${SKILLS_NODE_STYLE_QUATERNARY} label = "make" URL = "https://www.gnu.org/software/make/"];
+            bash       [${SKILLS_NODE_STYLE_QUATERNARY} label = "bash" URL = "https://www.gnu.org/software/bash/"];
 
-            ubuntu -> i3wm       ${SKILLS_EDGE_QUATERNARY};
-            ubuntu -> tmuxinator ${SKILLS_EDGE_QUATERNARY};
-            ubuntu -> tmux       ${SKILLS_EDGE_QUATERNARY};
-            ubuntu -> make       ${SKILLS_EDGE_QUATERNARY};
+            linux -> i3wm       ${SKILLS_EDGE_QUATERNARY};
+            linux -> tmuxinator ${SKILLS_EDGE_QUATERNARY};
+            linux -> tmux       ${SKILLS_EDGE_QUATERNARY};
+            linux -> make       ${SKILLS_EDGE_QUATERNARY};
+            linux -> bash       ${SKILLS_EDGE_QUATERNARY};
         }
         development_setup -> os ${SKILLS_EDGE_SECONDARY};
     }
@@ -173,12 +175,12 @@ digraph {
     subgraph cluster_queues {
         graph [style = "invis"];
 
-        supervisor [${SKILLS_NODE_STYLE_SECONDARY} label = "supervisor" URL = "http://supervisord.org/"];
         rabbitmq   [${SKILLS_NODE_STYLE_SECONDARY} label = "Rabbit MQ" URL = "https://www.rabbitmq.com"];
+        supervisor [${SKILLS_NODE_STYLE_SECONDARY} label = "supervisor" URL = "http://supervisord.org/"];
         pm2        [${SKILLS_NODE_STYLE_SECONDARY} label = "pm2" URL = "https://pm2.keymetrics.io/"];
 
-        queues -> supervisor ${SKILLS_EDGE_SECONDARY};
         queues -> rabbitmq   ${SKILLS_EDGE_SECONDARY};
+        queues -> supervisor ${SKILLS_EDGE_SECONDARY};
         queues -> pm2        ${SKILLS_EDGE_SECONDARY};
     }
     me -> queues ${SKILLS_EDGE_PRIMARY};
@@ -189,6 +191,16 @@ digraph {
 
         digital_ocean [${SKILLS_NODE_STYLE_SECONDARY} label = "Digital Ocean"];
         cloudflare    [${SKILLS_NODE_STYLE_SECONDARY} label = "Cloudflare"];
+
+        subgraph cluster_cloudflare {
+            graph [style = "invis"];
+
+            dns   [${SKILLS_NODE_STYLE_TERTIARY} label = "DNS" URL = "https://www.cloudflare.com/en-gb/dns/"];
+            pages [${SKILLS_NODE_STYLE_TERTIARY} label = "Pages" URL = "https://pages.cloudflare.com/"];
+
+            cloudflare -> dns   ${SKILLS_EDGE_TERTIARY};
+            cloudflare -> pages ${SKILLS_EDGE_TERTIARY};
+        }
 
         cloud -> digital_ocean ${SKILLS_EDGE_SECONDARY};
         cloud -> cloudflare    ${SKILLS_EDGE_SECONDARY};
@@ -276,7 +288,7 @@ digraph {
         subgraph cluster_php_packages {
             graph [style = "invis"];
 
-            tcpdf    [${SKILLS_NODE_STYLE_TERTIARY} label = "TCPDF, FPDI, etc." URL = "https://packagist.org/packages/tecnickcom/tcpdf"];
+            pdf      [${SKILLS_NODE_STYLE_TERTIARY} label = "pdf"];
             league   [${SKILLS_NODE_STYLE_TERTIARY} label = "thephpleague" URL = "https://thephpleague.com"];
             composer [${SKILLS_NODE_STYLE_TERTIARY} label = "composer" URL = "https://getcomposer.org"];
             symfony  [${SKILLS_NODE_STYLE_TERTIARY} label = "symfony" URL = "https://symfony.com/components"];
@@ -288,7 +300,17 @@ digraph {
             php_packages -> dotenv ${SKILLS_EDGE_TERTIARY};
             php_packages -> league ${SKILLS_EDGE_TERTIARY};
             php_packages -> spatie ${SKILLS_EDGE_TERTIARY};
-            php_packages -> tcpdf ${SKILLS_EDGE_TERTIARY};
+            php_packages -> pdf ${SKILLS_EDGE_TERTIARY};
+
+            subgraph cluster_php_pdf {
+                graph [style = "invis"];
+
+                browsershot [${SKILLS_NODE_STYLE_QUATERNARY} label = "browsershot" URL = "https://github.com/spatie/browsershot"];
+                tcpdf [${SKILLS_NODE_STYLE_QUATERNARY} label = "TCPDF, FPDI, etc." URL = "https://packagist.org/packages/tecnickcom/tcpdf"];
+
+                pdf -> browsershot ${SKILLS_EDGE_QUATERNARY};
+                pdf -> tcpdf ${SKILLS_EDGE_QUATERNARY};
+            }
         }
         php -> php_packages ${SKILLS_EDGE_SECONDARY};
 
@@ -343,16 +365,34 @@ digraph {
     misc [${SKILLS_NODE_STYLE_PRIMARY} label = "Misc"];
     subgraph cluster_misc {
         graph [style = "invis"];
-        dot        [${SKILLS_NODE_STYLE_SECONDARY} label = "dot" URL = "https://graphviz.org/doc/info/lang.html"];
-        graphviz   [${SKILLS_NODE_STYLE_SECONDARY} label = "graphviz" URL = "https://graphviz.org/"];
-        chrome_ext [${SKILLS_NODE_STYLE_SECONDARY} label = "Chrome Extension" URL = "https://developer.chrome.com/docs/extensions/"];
 
-        misc -> dot        ${SKILLS_EDGE_SECONDARY};
+        chrome_ext [${SKILLS_NODE_STYLE_SECONDARY} label = "Chrome Extension" URL = "https://developer.chrome.com/docs/extensions/"];
+        graphviz   [${SKILLS_NODE_STYLE_SECONDARY} label = "graphviz" URL = "https://graphviz.org/"];
+        misc_pdf   [${SKILLS_NODE_STYLE_SECONDARY} label = "PDF"];
+
+        misc -> misc_pdf   ${SKILLS_EDGE_SECONDARY};
         misc -> graphviz   ${SKILLS_EDGE_SECONDARY};
         misc -> chrome_ext ${SKILLS_EDGE_SECONDARY};
 
-        envsubst [${SKILLS_NODE_STYLE_TERTIARY} label = "envsubst" URL = "https://linux.die.net/man/1/envsubst"];
-        dot -> envsubst ${SKILLS_EDGE_TERTIARY};
+        dot        [${SKILLS_NODE_STYLE_TERTIARY} label = "dot" URL = "https://graphviz.org/doc/info/lang.html"];
+        envsubst   [${SKILLS_NODE_STYLE_QUATERNARY} label = "envsubst" URL = "https://linux.die.net/man/1/envsubst"];
+
+        graphviz -> dot ${SKILLS_EDGE_TERTIARY};
+        dot -> envsubst ${SKILLS_EDGE_QUATERNARY};
+
+        subgraph cluster_pdf {
+            graph [style = "invis"];
+
+            gs [${SKILLS_NODE_STYLE_TERTIARY} label = "gs" URL = "https://www.ghostscript.com/"];
+            pdftk [${SKILLS_NODE_STYLE_TERTIARY} label = "pdftk" URL = "https://www.pdflabs.com/tools/pdftk-server/"];
+            poppler [${SKILLS_NODE_STYLE_TERTIARY} label = "poppler" URL = "https://poppler.freedesktop.org/"];
+            tesseract [${SKILLS_NODE_STYLE_TERTIARY} label = "tesseract" URL = "https://github.com/tesseract-ocr/tesseract"];
+
+            misc_pdf -> gs ${SKILLS_EDGE_TERTIARY};
+            misc_pdf -> pdftk ${SKILLS_EDGE_TERTIARY};
+            misc_pdf -> poppler ${SKILLS_EDGE_TERTIARY};
+            misc_pdf -> tesseract ${SKILLS_EDGE_TERTIARY};
+        }
     }
     me -> misc ${SKILLS_EDGE_PRIMARY};
 
