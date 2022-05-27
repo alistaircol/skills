@@ -1,0 +1,110 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    subgraph cluster_php {
+        graph [style = "invis"];
+        php [${SKILLS_NODE_STYLE_PRIMARY} label = "PHP"];
+
+        php_docs [${SKILLS_NODE_STYLE_SECONDARY} label = "Docs"];
+        subgraph cluster_php_docs {
+            graph [style = "invis"];
+
+            doxygen [${SKILLS_NODE_STYLE_TERTIARY} label = "Doxygen" URL = "https://www.doxygen.nl/index.html"];
+
+            php_docs -> doxygen ${SKILLS_EDGE_TERTIARY};
+        }
+        php -> php_docs ${SKILLS_EDGE_SECONDARY};
+
+        php_ext [${SKILLS_NODE_STYLE_SECONDARY} label = "Extensions"];
+        subgraph cluster_php_ext {
+            graph [style = "invis"];
+
+            xdebug [${SKILLS_NODE_STYLE_TERTIARY} label = "xdebug" URL = "https://xdebug.org"];
+            pecl   [${SKILLS_NODE_STYLE_TERTIARY} label = "pecl" URL = "https://pecl.php.net"];
+
+            php_ext -> xdebug ${SKILLS_EDGE_TERTIARY};
+            php_ext -> pecl   ${SKILLS_EDGE_TERTIARY};
+
+            kcachegrind [${SKILLS_NODE_STYLE_QUATERNARY} label = "kcachegrind"  URL = "https://kcachegrind.github.io/html/Home.html"];
+
+            xdebug -> kcachegrind ${SKILLS_EDGE_QUATERNARY};
+        }
+        php -> php_ext ${SKILLS_EDGE_SECONDARY};
+
+        php_testing [${SKILLS_NODE_STYLE_SECONDARY} label = "Testing"];
+        subgraph cluster_php_testing {
+            graph [style = "invis"];
+
+            selenium [${SKILLS_NODE_STYLE_TERTIARY} label = "Selenium" URL = "https://www.selenium.dev/documentation/en/webdriver/"];
+            phpunit  [${SKILLS_NODE_STYLE_TERTIARY} label = "PHPUnit" URL = "https://phpunit.de"];
+            postman  [${SKILLS_NODE_STYLE_TERTIARY} label = "Postman" URL = "https://www.postman.com"];
+            behat    [${SKILLS_NODE_STYLE_TERTIARY} label = "Behat" URL = "https://docs.behat.org/en/latest/"];
+
+            php_testing -> selenium ${SKILLS_EDGE_TERTIARY};
+            php_testing -> phpunit  ${SKILLS_EDGE_TERTIARY};
+            php_testing -> postman  ${SKILLS_EDGE_TERTIARY};
+            php_testing -> behat    ${SKILLS_EDGE_TERTIARY};
+        }
+        php -> php_testing ${SKILLS_EDGE_SECONDARY};
+
+        php_qa [${SKILLS_NODE_STYLE_SECONDARY} label = "QA" URL = "https://phpqa.io/index.html"];
+        subgraph cluster_php_qa {
+            graph [style = "invis"];
+
+            phplint [${SKILLS_NODE_STYLE_TERTIARY} label = "phplint" URL = "https://github.com/overtrue/phplint"];
+            phpcbf  [${SKILLS_NODE_STYLE_TERTIARY} label = "phpcbf" URL = "https://github.com/squizlabs/PHP_CodeSniffer"];
+            phpcs   [${SKILLS_NODE_STYLE_TERTIARY} label = "phpcs" URL = "https://github.com/squizlabs/PHP_CodeSniffer"];
+
+            php_qa -> phplint ${SKILLS_EDGE_TERTIARY};
+            php_qa -> phpcbf  ${SKILLS_EDGE_TERTIARY};
+            php_qa -> phpcs   ${SKILLS_EDGE_TERTIARY};
+        }
+        php -> php_qa ${SKILLS_EDGE_SECONDARY};
+
+        php_packages [${SKILLS_NODE_STYLE_SECONDARY} label = "Packages"];
+        subgraph cluster_php_packages {
+            graph [style = "invis"];
+
+            pdf      [${SKILLS_NODE_STYLE_TERTIARY} label = "pdf"];
+            league   [${SKILLS_NODE_STYLE_TERTIARY} label = "thephpleague" URL = "https://thephpleague.com"];
+            composer [${SKILLS_NODE_STYLE_TERTIARY} label = "composer" URL = "https://getcomposer.org"];
+            symfony  [${SKILLS_NODE_STYLE_TERTIARY} label = "symfony" URL = "https://symfony.com/components"];
+            dotenv   [${SKILLS_NODE_STYLE_TERTIARY} label = "dotenv" URL = "https://packagist.org/packages/vlucas/phpdotenv"];
+            spatie   [${SKILLS_NODE_STYLE_TERTIARY} label = "spatie" URL = "https://spatie.be/open-source"];
+
+            php_packages -> composer ${SKILLS_EDGE_TERTIARY};
+            php_packages -> symfony ${SKILLS_EDGE_TERTIARY};
+            php_packages -> dotenv ${SKILLS_EDGE_TERTIARY};
+            php_packages -> league ${SKILLS_EDGE_TERTIARY};
+            php_packages -> spatie ${SKILLS_EDGE_TERTIARY};
+            php_packages -> pdf ${SKILLS_EDGE_TERTIARY};
+
+            subgraph cluster_php_pdf {
+                graph [style = "invis"];
+
+                browsershot [${SKILLS_NODE_STYLE_QUATERNARY} label = "browsershot" URL = "https://github.com/spatie/browsershot"];
+                tcpdf [${SKILLS_NODE_STYLE_QUATERNARY} label = "TCPDF, FPDI, etc." URL = "https://packagist.org/packages/tecnickcom/tcpdf"];
+
+                pdf -> browsershot ${SKILLS_EDGE_QUATERNARY};
+                pdf -> tcpdf ${SKILLS_EDGE_QUATERNARY};
+            }
+        }
+        php -> php_packages ${SKILLS_EDGE_SECONDARY};
+
+        php_frameworks [${SKILLS_NODE_STYLE_SECONDARY} label = "Frameworks"];
+        subgraph cluster_php_frameworks {
+            graph [style = "invis"];
+
+            cakephp  [${SKILLS_NODE_STYLE_TERTIARY} label = "CakePHP 2.x" URL = "https://cakephp.org"];
+            laravel  [${SKILLS_NODE_STYLE_TERTIARY} label = "Laravel 6+" URL = "https://laravel.com"];
+            livewire [${SKILLS_NODE_STYLE_TERTIARY} label = "Livewire" URL = "https://laravel-livewire.com/"];
+
+            php_frameworks -> cakephp ${SKILLS_EDGE_TERTIARY};
+            php_frameworks -> livewire ${SKILLS_EDGE_TERTIARY};
+            php_frameworks -> laravel ${SKILLS_EDGE_TERTIARY};
+        }
+        php -> php_frameworks ${SKILLS_EDGE_SECONDARY};
+    }
+}

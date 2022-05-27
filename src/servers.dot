@@ -1,0 +1,18 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    servers [${SKILLS_NODE_STYLE_PRIMARY} label = "Web Servers"];
+    subgraph cluster_servers {
+        graph [style = "invis"];
+
+        caddy  [label = "caddy" ${SKILLS_NODE_STYLE_SECONDARY} URL = "https://caddyserver.com/"];
+        nginx  [label = "nginx" ${SKILLS_NODE_STYLE_SECONDARY} URL = "https://www.nginx.com"];
+        apache [label = "httpd" ${SKILLS_NODE_STYLE_SECONDARY} URL = "https://httpd.apache.org"];
+
+        servers -> caddy  ${SKILLS_EDGE_SECONDARY};
+        servers -> nginx  ${SKILLS_EDGE_SECONDARY};
+        servers -> apache ${SKILLS_EDGE_SECONDARY};
+    }
+}

@@ -1,0 +1,16 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    js [${SKILLS_NODE_STYLE_PRIMARY} label = "js"];
+    subgraph cluster_js {
+        graph [style = "invis"];
+
+        alpinejs  [${SKILLS_NODE_STYLE_SECONDARY} label = "Alpine.js" URL = "https://alpinejs.dev"];
+        angularjs [${SKILLS_NODE_STYLE_SECONDARY} label = "angularjs" URL = "https://angularjs.org"];
+
+        js -> alpinejs  ${SKILLS_EDGE_SECONDARY};
+        js -> angularjs ${SKILLS_EDGE_SECONDARY};
+    }
+}

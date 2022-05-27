@@ -1,0 +1,18 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    proxies [${SKILLS_NODE_STYLE_PRIMARY} label = "Proxies"];
+    subgraph cluster_proxies {
+        graph [style = "invis"];
+
+        traefik [${SKILLS_NODE_STYLE_SECONDARY} label = "traefik" URL = "https://traefik.io/"];
+        haproxy [${SKILLS_NODE_STYLE_SECONDARY} label = "HAProxy" URL = "http://www.haproxy.org/"];
+        squid   [${SKILLS_NODE_STYLE_SECONDARY} label = "squid" URL = "https://www.nginx.com"];
+
+        proxies -> haproxy ${SKILLS_EDGE_SECONDARY};
+        proxies -> traefik ${SKILLS_EDGE_SECONDARY};
+        proxies -> squid   ${SKILLS_EDGE_SECONDARY};
+    }
+}

@@ -1,0 +1,18 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    database [${SKILLS_NODE_STYLE_PRIMARY} label = "DB"];
+    subgraph cluster_database {
+        graph [style = "invis"];
+
+        mysql   [${SKILLS_NODE_STYLE_SECONDARY} label = "MySQL/Mariadb" URL = "https://www.mysql.com"];
+        mongodb [${SKILLS_NODE_STYLE_SECONDARY} label = "MongoDB" URL = "https://www.mongodb.com"];
+        redis   [${SKILLS_NODE_STYLE_SECONDARY} label = "Redis" URL = "https://redis.io"];
+
+        database -> mysql   ${SKILLS_EDGE_SECONDARY};
+        database -> mongodb ${SKILLS_EDGE_SECONDARY};
+        database -> redis   ${SKILLS_EDGE_SECONDARY};
+    }
+}

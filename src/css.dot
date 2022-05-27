@@ -1,0 +1,24 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    css [${SKILLS_NODE_STYLE_PRIMARY} label = "css"];
+    subgraph cluster_css {
+        graph [style = "invis"];
+
+        sweetalert [${SKILLS_NODE_STYLE_SECONDARY} label = "sweetalert" URL = "https://www.npmjs.com/package/sweetalert2"];
+        bootstrap  [${SKILLS_NODE_STYLE_SECONDARY} label = "bootstrap" URL = "https://getbootstrap.com"];
+        tailwind   [${SKILLS_NODE_STYLE_SECONDARY} label = "tailwind" URL = "https://tailwindcss.com/"];
+        uigrid     [${SKILLS_NODE_STYLE_SECONDARY} label = "ui-grid" URL = "http://ui-grid.info"];
+        npm        [${SKILLS_NODE_STYLE_SECONDARY} label = "npm/nvm" URL = "https://www.npmjs.com"];
+        toastr     [${SKILLS_NODE_STYLE_SECONDARY} label = "toastr" URL = "https://www.npmjs.com/package/toastr"];
+
+        css -> bootstrap  ${SKILLS_EDGE_SECONDARY};
+        css -> tailwind   ${SKILLS_EDGE_SECONDARY};
+        css -> sweetalert ${SKILLS_EDGE_SECONDARY};
+        css -> toastr     ${SKILLS_EDGE_SECONDARY};
+        css -> uigrid     ${SKILLS_EDGE_SECONDARY};
+        css -> npm        ${SKILLS_EDGE_SECONDARY};
+    }
+}

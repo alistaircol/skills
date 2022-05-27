@@ -1,0 +1,38 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    misc [${SKILLS_NODE_STYLE_PRIMARY} label = "Misc"];
+    subgraph cluster_misc {
+        graph [style = "invis"];
+
+        chrome_ext [${SKILLS_NODE_STYLE_SECONDARY} label = "Chrome Extension" URL = "https://developer.chrome.com/docs/extensions/"];
+        graphviz   [${SKILLS_NODE_STYLE_SECONDARY} label = "graphviz" URL = "https://graphviz.org/"];
+        misc_pdf   [${SKILLS_NODE_STYLE_SECONDARY} label = "PDF"];
+
+        misc -> misc_pdf   ${SKILLS_EDGE_SECONDARY};
+        misc -> graphviz   ${SKILLS_EDGE_SECONDARY};
+        misc -> chrome_ext ${SKILLS_EDGE_SECONDARY};
+
+        dot        [${SKILLS_NODE_STYLE_TERTIARY} label = "dot" URL = "https://graphviz.org/doc/info/lang.html"];
+        envsubst   [${SKILLS_NODE_STYLE_QUATERNARY} label = "envsubst" URL = "https://linux.die.net/man/1/envsubst"];
+
+        graphviz -> dot ${SKILLS_EDGE_TERTIARY};
+        dot -> envsubst ${SKILLS_EDGE_QUATERNARY};
+
+        subgraph cluster_pdf {
+            graph [style = "invis"];
+
+            gs [${SKILLS_NODE_STYLE_TERTIARY} label = "gs" URL = "https://www.ghostscript.com/"];
+            pdftk [${SKILLS_NODE_STYLE_TERTIARY} label = "pdftk" URL = "https://www.pdflabs.com/tools/pdftk-server/"];
+            poppler [${SKILLS_NODE_STYLE_TERTIARY} label = "poppler" URL = "https://poppler.freedesktop.org/"];
+            tesseract [${SKILLS_NODE_STYLE_TERTIARY} label = "tesseract" URL = "https://github.com/tesseract-ocr/tesseract"];
+
+            misc_pdf -> gs ${SKILLS_EDGE_TERTIARY};
+            misc_pdf -> pdftk ${SKILLS_EDGE_TERTIARY};
+            misc_pdf -> poppler ${SKILLS_EDGE_TERTIARY};
+            misc_pdf -> tesseract ${SKILLS_EDGE_TERTIARY};
+        }
+    }
+}

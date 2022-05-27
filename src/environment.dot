@@ -1,0 +1,80 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    subgraph cluster_development {
+        graph [style = "invis"];
+        development_setup [${SKILLS_NODE_STYLE_PRIMARY} label = "Development"];
+
+        vcs [${SKILLS_NODE_STYLE_SECONDARY} label = "VCS"];
+        subgraph cluster_vcs {
+            graph [style = "invis"];
+
+            git [${SKILLS_NODE_STYLE_TERTIARY} label = "git" URL = "https://git-scm.com"];
+
+            subgraph cluster_git {
+                graph [style = "invis"];
+
+                hooks [${SKILLS_NODE_STYLE_QUATERNARY} label = "hooks" URL = "https://ac93.uk/articles/php-qa-tools/"];
+
+                git -> hooks ${SKILLS_EDGE_QUATERNARY};
+            }
+
+            vcs -> git ${SKILLS_EDGE_TERTIARY};
+        }
+        development_setup -> vcs ${SKILLS_EDGE_SECONDARY};
+
+        container [${SKILLS_NODE_STYLE_SECONDARY} label = "Containerisation"];
+        subgraph cluster_containerisation {
+            graph [style = "invis"];
+
+            docker [${SKILLS_NODE_STYLE_TERTIARY} label = "Docker" URL = "https://www.docker.com"];
+
+            container -> docker ${SKILLS_EDGE_TERTIARY};
+        }
+        development_setup -> container ${SKILLS_EDGE_SECONDARY};
+
+        ide [${SKILLS_NODE_STYLE_SECONDARY} label = "IDE"];
+        subgraph cluster_ide {
+            graph [style = "invis"];
+
+            datagrip [${SKILLS_NODE_STYLE_TERTIARY} label = "DataGrip" URL = "https://www.jetbrains.com/datagrip/"];
+            phpstorm [${SKILLS_NODE_STYLE_TERTIARY} label = "PHPStorm" URL = "https://www.jetbrains.com/phpstorm/"];
+
+            ide -> datagrip ${SKILLS_EDGE_TERTIARY};
+            ide -> phpstorm ${SKILLS_EDGE_TERTIARY};
+        }
+        development_setup -> ide ${SKILLS_EDGE_SECONDARY};
+
+        os [${SKILLS_NODE_STYLE_SECONDARY} label = "OS"];
+        subgraph cluster_os {
+            graph [style = "invis"];
+            macos [${SKILLS_NODE_STYLE_TERTIARY} label = "MacOS"];
+            os -> macos ${SKILLS_EDGE_TERTIARY};
+
+            brew   [${SKILLS_NODE_STYLE_QUATERNARY} label = "brew" URL = "https://brew.sh/"];
+            valet  [${SKILLS_NODE_STYLE_QUATERNARY} label = "valet" URL = "https://github.com/laravel/valet"];
+
+            macos -> brew  ${SKILLS_EDGE_QUATERNARY};
+            macos -> valet ${SKILLS_EDGE_QUATERNARY};
+
+            linux [${SKILLS_NODE_STYLE_TERTIARY} label = "Linux" URL = "https://regolith-linux.org"];
+
+            os -> linux ${SKILLS_EDGE_TERTIARY};
+
+            i3wm       [${SKILLS_NODE_STYLE_QUATERNARY} label = "i3wm" URL = "https://i3wm.org"];
+            tmuxinator [${SKILLS_NODE_STYLE_QUATERNARY} label = "tmuxinator" URL = "https://github.com/tmuxinator/tmuxinator"];
+            tmux       [${SKILLS_NODE_STYLE_QUATERNARY} label = "tmux" URL = "https://github.com/tmux/tmux/wiki/Getting-Started"];
+            make       [${SKILLS_NODE_STYLE_QUATERNARY} label = "make" URL = "https://www.gnu.org/software/make/"];
+            bash       [${SKILLS_NODE_STYLE_QUATERNARY} label = "bash" URL = "https://www.gnu.org/software/bash/"];
+
+            linux -> i3wm       ${SKILLS_EDGE_QUATERNARY};
+            linux -> tmuxinator ${SKILLS_EDGE_QUATERNARY};
+            linux -> tmux       ${SKILLS_EDGE_QUATERNARY};
+            linux -> make       ${SKILLS_EDGE_QUATERNARY};
+            linux -> bash       ${SKILLS_EDGE_QUATERNARY};
+        }
+        development_setup -> os ${SKILLS_EDGE_SECONDARY};
+    }
+}

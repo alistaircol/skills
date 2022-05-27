@@ -1,0 +1,43 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    subgraph cluster_cloud {
+        graph [style = "invis"];
+        cloud [${SKILLS_NODE_STYLE_PRIMARY} label = "Cloud"];
+
+        digital_ocean [${SKILLS_NODE_STYLE_SECONDARY} label = "Digital Ocean"];
+        cloudflare    [${SKILLS_NODE_STYLE_SECONDARY} label = "Cloudflare"];
+
+        subgraph cluster_cloudflare {
+            graph [style = "invis"];
+
+            dns   [${SKILLS_NODE_STYLE_TERTIARY} label = "DNS" URL = "https://www.cloudflare.com/en-gb/dns/"];
+            pages [${SKILLS_NODE_STYLE_TERTIARY} label = "Pages" URL = "https://pages.cloudflare.com/"];
+
+            cloudflare -> dns   ${SKILLS_EDGE_TERTIARY};
+            cloudflare -> pages ${SKILLS_EDGE_TERTIARY};
+        }
+
+        cloud -> digital_ocean ${SKILLS_EDGE_SECONDARY};
+        cloud -> cloudflare    ${SKILLS_EDGE_SECONDARY};
+
+        subgraph cluster_aws {
+            graph [style = "invis"];
+
+            aws [${SKILLS_NODE_STYLE_SECONDARY} label = "AWS"  URL = "https://aws.amazon.com"];
+
+            iam [${SKILLS_NODE_STYLE_TERTIARY} label = "IAM" URL = "https://aws.amazon.com/iam/"];
+            ec2 [${SKILLS_NODE_STYLE_TERTIARY} label = "EC2" URL = "https://aws.amazon.com/ec2/"];
+            rds [${SKILLS_NODE_STYLE_TERTIARY} label = "RDS" URL = "https://aws.amazon.com/rds/"];
+            s3  [${SKILLS_NODE_STYLE_TERTIARY} label = "S3"  URL = "https://aws.amazon.com/s3/"];
+
+            aws -> iam ${SKILLS_EDGE_TERTIARY};
+            aws -> ec2 ${SKILLS_EDGE_TERTIARY};
+            aws -> rds ${SKILLS_EDGE_TERTIARY};
+            aws -> s3  ${SKILLS_EDGE_TERTIARY};
+        }
+        cloud -> aws ${SKILLS_EDGE_SECONDARY};
+    }
+}

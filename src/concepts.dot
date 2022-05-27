@@ -1,0 +1,19 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    concepts [${SKILLS_NODE_STYLE_PRIMARY} label = "Concepts"];
+    subgraph cluster_concepts {
+        graph [style = "invis"];
+        iac          [${SKILLS_NODE_STYLE_SECONDARY} label = "IaC" URL = "https://en.wikipedia.org/wiki/Infrastructure_as_code"];
+        scraping     [${SKILLS_NODE_STYLE_SECONDARY} label = "Web Scraping" URL = "https://github.com/alistaircol/scotlis"];
+        twelvefactor [${SKILLS_NODE_STYLE_SECONDARY} label = "12 Factor App" URL = "https://12factor.net/"];
+        rest         [${SKILLS_NODE_STYLE_SECONDARY} label = "REST" URL = "https://restfulapi.net/"];
+
+        concepts -> iac          ${SKILLS_EDGE_SECONDARY};
+        concepts -> scraping     ${SKILLS_EDGE_SECONDARY};
+        concepts -> twelvefactor ${SKILLS_EDGE_SECONDARY};
+        concepts -> rest         ${SKILLS_EDGE_SECONDARY};
+    }
+}

@@ -1,0 +1,29 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    devops [${SKILLS_NODE_STYLE_PRIMARY} label = "DevOps"];
+    subgraph cluster_devops {
+        graph [style = "invis"];
+        bitbucket_pipelines [${SKILLS_NODE_STYLE_SECONDARY} label = "Bitbucket Pipelines" URL = "https://bitbucket.org/product/features/pipelines"];
+        github_actions      [${SKILLS_NODE_STYLE_SECONDARY} label = "Github Actions" URL = "https://github.com/features/actions"];
+        netlify             [${SKILLS_NODE_STYLE_SECONDARY} label = "Netlify" URL = "https://www.netlify.com"];
+        watchtower          [${SKILLS_NODE_STYLE_SECONDARY} label = "watchtower" URL = "https://containrrr.dev/watchtower/"];
+        terraform           [${SKILLS_NODE_STYLE_SECONDARY} label = "Terraform" URL = "http://www.haproxy.org/"];
+        ansible             [${SKILLS_NODE_STYLE_SECONDARY} label = "ansible" URL = "https://www.ansible.com/"];
+
+        devops -> bitbucket_pipelines ${SKILLS_EDGE_SECONDARY};
+        devops -> github_actions      ${SKILLS_EDGE_SECONDARY};
+        devops -> netlify             ${SKILLS_EDGE_SECONDARY};
+        devops -> watchtower          ${SKILLS_EDGE_SECONDARY};
+        devops -> terraform           ${SKILLS_EDGE_SECONDARY};
+        devops -> ansible             ${SKILLS_EDGE_SECONDARY};
+
+        yamllint  [${SKILLS_NODE_STYLE_TERTIARY} label = "yalmlint"];
+        jinja     [${SKILLS_NODE_STYLE_TERTIARY} label = "jinja"];
+
+        ansible -> yamllint ${SKILLS_EDGE_TERTIARY};
+        ansible -> jinja    ${SKILLS_EDGE_TERTIARY};
+    }
+}

@@ -1,0 +1,18 @@
+digraph {
+    rankdir = "${SKILLS_DIRECTION}";
+
+    graph [bgcolor = "transparent"];
+
+    queues [${SKILLS_NODE_STYLE_PRIMARY} label = "Queues"];
+    subgraph cluster_queues {
+        graph [style = "invis"];
+
+        rabbitmq   [${SKILLS_NODE_STYLE_SECONDARY} label = "Rabbit MQ" URL = "https://www.rabbitmq.com"];
+        supervisor [${SKILLS_NODE_STYLE_SECONDARY} label = "supervisor" URL = "http://supervisord.org/"];
+        pm2        [${SKILLS_NODE_STYLE_SECONDARY} label = "pm2" URL = "https://pm2.keymetrics.io/"];
+
+        queues -> rabbitmq   ${SKILLS_EDGE_SECONDARY};
+        queues -> supervisor ${SKILLS_EDGE_SECONDARY};
+        queues -> pm2        ${SKILLS_EDGE_SECONDARY};
+    }
+}
