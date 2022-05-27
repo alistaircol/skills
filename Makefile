@@ -77,7 +77,7 @@ pdf:
 secondary_dot:
 	@SKILLS_DIRECTION=TB bash build.sh
 
-secondary: secondary_dot environment devops ssg servers proxies db queues cloud css js misc
+secondary: secondary_dot environment devops ssg servers proxies db queues cloud php css js misc concepts
 
 environment:
 	@$(docker_run_image_dot) -Tpng -Gbgcolor="transparent" -o build/subgraphs/environment.png bin/environment.dot
