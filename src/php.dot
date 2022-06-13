@@ -37,15 +37,17 @@ digraph {
         subgraph cluster_php_testing {
             graph [style = "invis"];
 
-            selenium [${SKILLS_NODE_STYLE_TERTIARY} label = "Selenium" URL = "https://www.selenium.dev/documentation/en/webdriver/"];
-            phpunit  [${SKILLS_NODE_STYLE_TERTIARY} label = "PHPUnit" URL = "https://phpunit.de"];
-            postman  [${SKILLS_NODE_STYLE_TERTIARY} label = "Postman" URL = "https://www.postman.com"];
-            behat    [${SKILLS_NODE_STYLE_TERTIARY} label = "Behat" URL = "https://docs.behat.org/en/latest/"];
+            selenium   [${SKILLS_NODE_STYLE_TERTIARY} label = "Selenium" URL = "https://www.selenium.dev/documentation/en/webdriver/"];
+            playwright [${SKILLS_NODE_STYLE_TERTIARY} label = "Playwright" URL = "https://playwright.dev/"];
+            phpunit    [${SKILLS_NODE_STYLE_TERTIARY} label = "PHPUnit" URL = "https://phpunit.de"];
+            postman    [${SKILLS_NODE_STYLE_TERTIARY} label = "Postman" URL = "https://www.postman.com"];
+            behat      [${SKILLS_NODE_STYLE_TERTIARY} label = "Behat" URL = "https://docs.behat.org/en/latest/"];
 
-            php_testing -> selenium ${SKILLS_EDGE_TERTIARY};
-            php_testing -> phpunit  ${SKILLS_EDGE_TERTIARY};
-            php_testing -> postman  ${SKILLS_EDGE_TERTIARY};
-            php_testing -> behat    ${SKILLS_EDGE_TERTIARY};
+            php_testing -> selenium   ${SKILLS_EDGE_TERTIARY};
+            php_testing -> playwright ${SKILLS_EDGE_TERTIARY};
+            php_testing -> phpunit    ${SKILLS_EDGE_TERTIARY};
+            php_testing -> postman    ${SKILLS_EDGE_TERTIARY};
+            php_testing -> behat      ${SKILLS_EDGE_TERTIARY};
         }
         php -> php_testing ${SKILLS_EDGE_SECONDARY};
 

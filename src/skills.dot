@@ -77,12 +77,14 @@ digraph {
             i3wm       [${SKILLS_NODE_STYLE_QUATERNARY} label = "i3wm" URL = "https://i3wm.org"];
             tmuxinator [${SKILLS_NODE_STYLE_QUATERNARY} label = "tmuxinator" URL = "https://github.com/tmuxinator/tmuxinator"];
             tmux       [${SKILLS_NODE_STYLE_QUATERNARY} label = "tmux" URL = "https://github.com/tmux/tmux/wiki/Getting-Started"];
+            taskfile   [${SKILLS_NODE_STYLE_QUATERNARY} label = "taskfile" URL = "https://taskfile.dev/"];
             make       [${SKILLS_NODE_STYLE_QUATERNARY} label = "make" URL = "https://www.gnu.org/software/make/"];
             bash       [${SKILLS_NODE_STYLE_QUATERNARY} label = "bash" URL = "https://www.gnu.org/software/bash/"];
 
             linux -> i3wm       ${SKILLS_EDGE_QUATERNARY};
             linux -> tmuxinator ${SKILLS_EDGE_QUATERNARY};
             linux -> tmux       ${SKILLS_EDGE_QUATERNARY};
+            linux -> taskfile   ${SKILLS_EDGE_QUATERNARY};
             linux -> make       ${SKILLS_EDGE_QUATERNARY};
             linux -> bash       ${SKILLS_EDGE_QUATERNARY};
         }
@@ -258,15 +260,17 @@ digraph {
         subgraph cluster_php_testing {
             graph [style = "invis"];
 
-            selenium [${SKILLS_NODE_STYLE_TERTIARY} label = "Selenium" URL = "https://www.selenium.dev/documentation/en/webdriver/"];
-            phpunit  [${SKILLS_NODE_STYLE_TERTIARY} label = "PHPUnit" URL = "https://phpunit.de"];
-            postman  [${SKILLS_NODE_STYLE_TERTIARY} label = "Postman" URL = "https://www.postman.com"];
-            behat    [${SKILLS_NODE_STYLE_TERTIARY} label = "Behat" URL = "https://docs.behat.org/en/latest/"];
+            selenium   [${SKILLS_NODE_STYLE_TERTIARY} label = "Selenium" URL = "https://www.selenium.dev/documentation/en/webdriver/"];
+            playwright [${SKILLS_NODE_STYLE_TERTIARY} label = "Playwright" URL = "https://playwright.dev/"];
+            phpunit    [${SKILLS_NODE_STYLE_TERTIARY} label = "PHPUnit" URL = "https://phpunit.de"];
+            postman    [${SKILLS_NODE_STYLE_TERTIARY} label = "Postman" URL = "https://www.postman.com"];
+            behat      [${SKILLS_NODE_STYLE_TERTIARY} label = "Behat" URL = "https://docs.behat.org/en/latest/"];
 
-            php_testing -> selenium ${SKILLS_EDGE_TERTIARY};
-            php_testing -> phpunit  ${SKILLS_EDGE_TERTIARY};
-            php_testing -> postman  ${SKILLS_EDGE_TERTIARY};
-            php_testing -> behat    ${SKILLS_EDGE_TERTIARY};
+            php_testing -> selenium   ${SKILLS_EDGE_TERTIARY};
+            php_testing -> playwright ${SKILLS_EDGE_TERTIARY};
+            php_testing -> phpunit    ${SKILLS_EDGE_TERTIARY};
+            php_testing -> postman    ${SKILLS_EDGE_TERTIARY};
+            php_testing -> behat      ${SKILLS_EDGE_TERTIARY};
         }
         php -> php_testing ${SKILLS_EDGE_SECONDARY};
 
@@ -403,11 +407,13 @@ digraph {
         scraping     [${SKILLS_NODE_STYLE_SECONDARY} label = "Web Scraping" URL = "https://github.com/alistaircol/scotlis"];
         twelvefactor [${SKILLS_NODE_STYLE_SECONDARY} label = "12 Factor App" URL = "https://12factor.net/"];
         rest         [${SKILLS_NODE_STYLE_SECONDARY} label = "REST" URL = "https://restfulapi.net/"];
+        owasp        [${SKILLS_NODE_STYLE_SECONDARY} label = "OWASP" URL = "https://owasp.org/Top10/"];
 
         concepts -> iac          ${SKILLS_EDGE_SECONDARY};
         concepts -> scraping     ${SKILLS_EDGE_SECONDARY};
         concepts -> twelvefactor ${SKILLS_EDGE_SECONDARY};
         concepts -> rest         ${SKILLS_EDGE_SECONDARY};
+        concepts -> owasp        ${SKILLS_EDGE_SECONDARY};
     }
     me -> concepts ${SKILLS_EDGE_PRIMARY};
 }
