@@ -7,7 +7,7 @@ vars:
   WEB_COLOR: '#41403e'
   DOCKER_IMAGE_SKILLS: alistaircol/skills
   DOCKER_IMAGE_GRAPHVIZ: dot
-  DOCKER_RUN: docker run --rm --tty --volume="$(pwd):/app" --workdir="/app"
+  DOCKER_RUN: docker run --rm --tty --volume="$(pwd):/app" --workdir="/app" --user=$(id -u):$(id -g)
   DOCKER_RUN_SKILLS: "{{.DOCKER_RUN}} {{.DOCKER_IMAGE_SKILLS}}"
 
 tasks:
