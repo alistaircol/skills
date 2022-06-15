@@ -53,14 +53,14 @@ tasks:
   clean:
     cmds:
     - echo "TODO"s
-#    - find "$(pwd)/build" -type f -not -name ".gitkeep" -not -name "README.md" -delete
-#    - find "$(pwd)/bin" -type f -not -name "README.md" -delete
+    - find "$(pwd)/build" -type f -not -name ".gitkeep" -not -name "README.md" -delete
+    - find "$(pwd)/dot" -type f -not -name "README.md" -delete
     interactive: true
 
   build_dot:
     cmds:
-    - bash build-primary.sh
-    - bash build-secondary.sh
+    - bash bin/build-primary.sh
+    - bash bin/build-secondary.sh
 
   build_png:
     cmds:
@@ -102,4 +102,4 @@ tasks:
     - "{{.DOCKER_RUN_SKILLS}} dot -Tps2 -o build/skills.ps dot/skills.dot"
     - "{{.DOCKER_RUN_SKILLS}} ps2pdf build/skills.ps build/skills.pdf"
     - rm build/skills.ps
-    - bash canonicalise-pdf-skills.sh
+    - bash bin/canonicalise-pdf-skills.sh
