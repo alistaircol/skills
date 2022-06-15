@@ -9,6 +9,20 @@ vars:
   DOCKER_IMAGE_GRAPHVIZ: dot
   DOCKER_RUN: docker run --rm --tty --volume="$(pwd):/app" --workdir="/app" --user=$(id -u):$(id -g)
   DOCKER_RUN_SKILLS: "{{.DOCKER_RUN}} {{.DOCKER_IMAGE_SKILLS}}"
+  SUBGRAPHS: |
+    environment
+    devops
+    ssg
+    servers
+    proxies
+    db
+    queues
+    cloud
+    php
+    css
+    js
+    misc
+    concepts
 
 tasks:
   lint:
