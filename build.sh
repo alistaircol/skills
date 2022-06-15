@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 export SKILLS_FONT_NAME="Cousine"
-
-if [[ -z "${SKILLS_DIRECTION}" ]]; then
-  export SKILLS_DIRECTION="LR"
-fi
+export SKILLS_DIRECTION="LR"
 
 # orange
 export SKILLS_EDGE_PRIMARY="[style = \"solid\" color = \"#f39c12\" arrowhead = \"none\"]"
@@ -28,18 +25,3 @@ export SKILLS_NODE_STYLE_TERTIARY="shape = \"box3d\" style = \"filled\" fillcolo
 
 # clouds/silver text:
 export SKILLS_NODE_STYLE_QUATERNARY="shape = \"box3d\" style = \"filled\" fillcolor = \"#ecf0f1\" color = \"#bdc3c7\" fontcolor=\"#000000\" fontname = \"${SKILLS_FONT_NAME}\""
-
-envsubst < src/skills.dot > bin/skills.dot
-envsubst < src/environment.dot > bin/environment.dot
-envsubst < src/devops.dot > bin/devops.dot
-envsubst < src/ssg.dot > bin/ssg.dot
-envsubst < src/servers.dot > bin/servers.dot
-envsubst < src/proxies.dot > bin/proxies.dot
-envsubst < src/db.dot > bin/db.dot
-envsubst < src/queues.dot > bin/queues.dot
-envsubst < src/cloud.dot > bin/cloud.dot
-envsubst < src/php.dot > bin/php.dot
-envsubst < src/css.dot > bin/css.dot
-envsubst < src/js.dot > bin/js.dot
-envsubst < src/misc.dot > bin/misc.dot
-envsubst < src/concepts.dot > bin/concepts.dot

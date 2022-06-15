@@ -1,6 +1,6 @@
 # Skills
 
-My skills tree.
+My skills tree. Uses taskfile to run the build process.
 
 ```text
 $ make

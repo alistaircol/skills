@@ -13,9 +13,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Build Image
-      run: |
-        make image
+    - name: Install Task
+      uses: arduino/setup-task@v1
 
     - name: Build Skills
       run: |
