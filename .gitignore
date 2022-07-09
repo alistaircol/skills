@@ -2,3 +2,4 @@ build/
 dot/
 .idea/
 **.DS_Store
+bin/
