@@ -7,12 +7,14 @@ digraph {
     subgraph cluster_ssg {
         graph [style = "invis"];
 
-        mkdocs [${SKILLS_NODE_STYLE_SECONDARY} label = "mkdocs" URL = "https://www.mkdocs.org"];
-        nuxt   [${SKILLS_NODE_STYLE_SECONDARY} label = "nuxt" URL = "https://nuxtjs.org"];
-        hugo   [${SKILLS_NODE_STYLE_SECONDARY} label = "hugo" URL = "https://gohugo.io"];
+        mkdocs     [${SKILLS_NODE_STYLE_SECONDARY} label = "mkdocs" URL = "https://www.mkdocs.org"];
+        nuxt       [${SKILLS_NODE_STYLE_SECONDARY} label = "nuxt" URL = "https://nuxtjs.org"];
+        hugo       [${SKILLS_NODE_STYLE_SECONDARY} label = "hugo" URL = "https://gohugo.io"];
+        docusaurus [${SKILLS_NODE_STYLE_SECONDARY} label = "docusaurus" URL = "https://docusaurus.io/"];
 
-        ssg -> mkdocs ${SKILLS_EDGE_SECONDARY};
-        ssg -> nuxt   ${SKILLS_EDGE_SECONDARY};
-        ssg -> hugo   ${SKILLS_EDGE_SECONDARY};
+        ssg -> mkdocs     ${SKILLS_EDGE_SECONDARY};
+        ssg -> nuxt       ${SKILLS_EDGE_SECONDARY};
+        ssg -> hugo       ${SKILLS_EDGE_SECONDARY};
+        ssg -> docusaurus ${SKILLS_EDGE_SECONDARY};
     }
 }

@@ -121,13 +121,16 @@ digraph {
     subgraph cluster_ssg {
         graph [style = "invis"];
 
-        mkdocs [${SKILLS_NODE_STYLE_SECONDARY} label = "mkdocs" URL = "https://www.mkdocs.org"];
-        nuxt   [${SKILLS_NODE_STYLE_SECONDARY} label = "nuxt" URL = "https://nuxtjs.org"];
-        hugo   [${SKILLS_NODE_STYLE_SECONDARY} label = "hugo" URL = "https://gohugo.io"];
+        mkdocs     [${SKILLS_NODE_STYLE_SECONDARY} label = "mkdocs" URL = "https://www.mkdocs.org"];
+        nuxt       [${SKILLS_NODE_STYLE_SECONDARY} label = "nuxt" URL = "https://nuxtjs.org"];
+        hugo       [${SKILLS_NODE_STYLE_SECONDARY} label = "hugo" URL = "https://gohugo.io"];
+        docusaurus [${SKILLS_NODE_STYLE_SECONDARY} label = "docusaurus" URL = "https://docusaurus.io/"];
 
-        ssg -> mkdocs ${SKILLS_EDGE_SECONDARY};
-        ssg -> nuxt   ${SKILLS_EDGE_SECONDARY};
-        ssg -> hugo   ${SKILLS_EDGE_SECONDARY};
+        ssg -> mkdocs     ${SKILLS_EDGE_SECONDARY};
+        ssg -> nuxt       ${SKILLS_EDGE_SECONDARY};
+        ssg -> hugo       ${SKILLS_EDGE_SECONDARY};
+        ssg -> docusaurus ${SKILLS_EDGE_SECONDARY};
+
     }
     me -> ssg ${SKILLS_EDGE_PRIMARY};
 
@@ -234,9 +237,13 @@ digraph {
         subgraph cluster_php_docs {
             graph [style = "invis"];
 
-            doxygen [${SKILLS_NODE_STYLE_TERTIARY} label = "Doxygen" URL = "https://www.doxygen.nl/index.html"];
+            phpdoc  [${SKILLS_NODE_STYLE_TERTIARY} label = "phpdoc" URL = "https://www.phpdoc.org/"];
+            doctum  [${SKILLS_NODE_STYLE_TERTIARY} label = "doctum" URL = "https://github.com/code-lts/doctum"];
+            openapi [${SKILLS_NODE_STYLE_TERTIARY} label = "openapi" URL = "https://openapi-generator.tech/"];
 
-            php_docs -> doxygen ${SKILLS_EDGE_TERTIARY};
+            php_docs -> phpdoc  ${SKILLS_EDGE_TERTIARY};
+            php_docs -> doctum  ${SKILLS_EDGE_TERTIARY};
+            php_docs -> openapi ${SKILLS_EDGE_TERTIARY};
         }
         php -> php_docs ${SKILLS_EDGE_SECONDARY};
 
