@@ -13,10 +13,12 @@ digraph {
 
             phpdoc  [${SKILLS_NODE_STYLE_TERTIARY} label = "phpdoc" URL = "https://www.phpdoc.org/"];
             doctum  [${SKILLS_NODE_STYLE_TERTIARY} label = "doctum" URL = "https://github.com/code-lts/doctum"];
+            doxygen [${SKILLS_NODE_STYLE_TERTIARY} label = "doxygen" URL = "https://doxygen.nl/"];
             openapi [${SKILLS_NODE_STYLE_TERTIARY} label = "openapi" URL = "https://openapi-generator.tech/"];
 
             php_docs -> phpdoc  ${SKILLS_EDGE_TERTIARY};
             php_docs -> doctum  ${SKILLS_EDGE_TERTIARY};
+            php_docs -> doxygen ${SKILLS_EDGE_TERTIARY};
             php_docs -> openapi ${SKILLS_EDGE_TERTIARY};
         }
         php -> php_docs ${SKILLS_EDGE_SECONDARY};
