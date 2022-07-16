@@ -280,6 +280,14 @@ digraph {
             php_testing -> phpunit    ${SKILLS_EDGE_TERTIARY};
             php_testing -> postman    ${SKILLS_EDGE_TERTIARY};
             php_testing -> behat      ${SKILLS_EDGE_TERTIARY};
+
+            subgraph cluster_php_testing_phpunit {
+                graph [style = "invis"];
+
+                mockery [${SKILLS_NODE_STYLE_QUATERNARY} label = "mockery" URL = "http://docs.mockery.io/en/latest/"];
+
+                phpunit -> mockery ${SKILLS_EDGE_QUATERNARY};
+            }
         }
         php -> php_testing ${SKILLS_EDGE_SECONDARY};
 
